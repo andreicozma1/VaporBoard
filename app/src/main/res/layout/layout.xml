@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+    <com.andrei.vaporboard.MyKeyboardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+android:keyBackground="@drawable/customkeybackground1released"
+    android:keyPreviewLayout="@null"
+    android:background="@drawable/customgradientbackground"
+        android:foregroundGravity="center|center_horizontal"
+        android:gravity="center|center_horizontal"
+    android:paddingTop="5dp"
+    android:keyTextSize="23dp"
+    android:paddingBottom="3dp">
+    </com.andrei.vaporboard.MyKeyboardView>

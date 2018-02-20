@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.andrei.vaporboard.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nothing yet fam"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENABLE"
+        android:id="@+id/enableBttn"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="Try typing here..."
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWITCH PREVIOUS"
+        android:id="@+id/switchPrevBttn"
+        android:layout_marginBottom="111dp"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET"
+        android:id="@+id/setKeyBttn"
+        android:layout_below="@+id/enableBttn"
+        android:layout_centerHorizontal="true" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/KeyHeightLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Key Height"
+                android:textAlignment="center" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/keyHeightSeekbar"
+                android:max="50"
+                android:progress="40" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:id="@+id/keyHeightText"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/KeyboardHeightLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keyboard Height"
+                android:textAlignment="center" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/keyboardHeightSeekbar"
+                android:max="50"
+                android:progress="30"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:id="@+id/keyboardHeightText"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Background COLOR"
+        android:id="@+id/bgColorPicker"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

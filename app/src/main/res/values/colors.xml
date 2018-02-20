@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorKeyboardBackground">#404040</color>
+    <color name="colorKeyBackground">#0A0A0A</color>
+    <color name="colorKeyBackgroundAlt">#0A0A0A</color>
+    <color name="colorKeyBorder">#0A0A0A</color>
+    <color name="colorPopupBackground">#808080</color>
+    <color name="colorPopupBorder">#808080</color>
+</resources>
