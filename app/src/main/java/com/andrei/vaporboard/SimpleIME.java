@@ -157,17 +157,26 @@ public class SimpleIME extends InputMethodService
                 if (lastUsedPredictedWord != null){
                     ic.deleteSurroundingText(lastUsedPredictedWord.length(), 0);
                 } else{
-                    ic.deleteSurroundingText(splitStr[splitStr.length-1].length(), 0);
+                    try {
+                        ic.deleteSurroundingText(splitStr[splitStr.length - 1].length(), 0);
+                    }catch(Exception e){
+
+                    }
                 }
 
-                ic.commitText(keys.get(1).label.toString(),1);
+                if(keys.get(1).label != null){
+                    ic.commitText(keys.get(1).label.toString(),1);
+                }
+
 
                 while(c1 != 0){
                     ic.commitText(" ", 0);
                     c1--;
                 }
 
-                lastUsedPredictedWord = keys.get(1).label.toString();
+                if(keys.get(1).label != null) {
+                    lastUsedPredictedWord = keys.get(1).label.toString();
+                }
                 break;
             case 57346:
                 int c2 = 0;
@@ -179,15 +188,22 @@ public class SimpleIME extends InputMethodService
                 if (lastUsedPredictedWord != null){
                     ic.deleteSurroundingText(lastUsedPredictedWord.length(), 0);
                 } else{
+                    try{
                     ic.deleteSurroundingText(splitStr[splitStr.length-1].length(), 0);
-                }
+                }catch(Exception e){
 
-                ic.commitText(keys.get(2).label.toString(),1);
+            }
+                }
+                if(keys.get(2).label != null) {
+                    ic.commitText(keys.get(2).label.toString(), 1);
+                }
                 while(c2 != 0){
                     ic.commitText(" ", 0);
                     c2--;
                 }
-                lastUsedPredictedWord = keys.get(1).label.toString();
+                if(keys.get(2).label != null) {
+                    lastUsedPredictedWord = keys.get(1).label.toString();
+                }
                 break;
             case 57347:
                 int c3 = 0;
@@ -199,15 +215,23 @@ public class SimpleIME extends InputMethodService
                 if (lastUsedPredictedWord != null){
                     ic.deleteSurroundingText(lastUsedPredictedWord.length(), 0);
                 } else{
+                    try{
                     ic.deleteSurroundingText(splitStr[splitStr.length-1].length(), 0);
+                    }catch(Exception e){
+
+                    }
                 }
 
-                ic.commitText(keys.get(3).label.toString(),1);
+                if(keys.get(3).label != null) {
+                    ic.commitText(keys.get(3).label.toString(), 1);
+                }
                 while(c3 != 0){
                     ic.commitText(" ", 0);
                     c3--;
                 }
-                lastUsedPredictedWord = keys.get(1).label.toString();
+                if(keys.get(3).label != null) {
+                    lastUsedPredictedWord = keys.get(1).label.toString();
+                }
                 break;
             default:
                 char code = (char)primaryCode;
@@ -227,7 +251,9 @@ public class SimpleIME extends InputMethodService
         String str = ic.getTextBeforeCursor(5000, 0).toString();
         splitStr = str.split("\\s+");
         System.out.println(splitStr.length);
-        fetchSuggestionsFor(splitStr[splitStr.length - 1]);
+        if(splitStr.length > 0) {
+            fetchSuggestionsFor(splitStr[splitStr.length - 1]);
+        }
     }
 
     private void fetchSuggestionsFor(String input){

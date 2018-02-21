@@ -1,33 +1,20 @@
 package com.andrei.vaporboard;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.IBinder;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.flask.colorpicker.ColorPickerView;
@@ -35,17 +22,11 @@ import com.flask.colorpicker.OnColorSelectedListener;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-
 public class MainActivity extends Activity {
 
-    SeekBar seekBarHeight;
+    SeekBar keyHeightSeekBar;
     SharedPreferences mSettings;
-    TextView seekBarHeightText;
+    TextView keyHeightText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,22 +75,20 @@ public class MainActivity extends Activity {
             }
         });
         mSettings = getApplicationContext().getSharedPreferences("vaporKbSettings", 0);
-        final SharedPreferences.Editor editor = mSettings.edit();
-        seekBarHeightText = (TextView) findViewById(R.id.keyHeightText);
-        seekBarHeight = (SeekBar) findViewById(R.id.keyHeightSeekbar);
-        editor.putInt("keyheight", seekBarHeight.getProgress());
-        editor.commit();
-        seekBarHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        final SharedPreferences.Editor sharedPreferences = mSettings.edit();
+        keyHeightText = (TextView) findViewById(R.id.keyHeightText);
+        keyHeightSeekBar = (SeekBar) findViewById(R.id.keyHeightSeekbar);
+        sharedPreferences.putInt("keyheight", keyHeightSeekBar.getProgress());
+        sharedPreferences.commit();
+        keyHeightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                editor.putInt("keyheight", i);
-                editor.commit();
+                sharedPreferences.putInt("keyheight", i);
+                sharedPreferences.commit();
                 Integer height = mSettings.getInt("keyheight", 0);
                 System.out.println(height);
-                seekBarHeightText.setText(height.toString());
+                keyHeightText.setText(height.toString());
             }
-
-
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -124,13 +103,13 @@ public class MainActivity extends Activity {
 
         keyboardHeightSeek = (SeekBar) findViewById(R.id.keyboardHeightSeekbar);
         keyboardHeightText = (TextView) findViewById(R.id.keyboardHeightText);
-        editor.putInt("keyboardheight", keyboardHeightSeek.getProgress());
-        editor.commit();
+        sharedPreferences.putInt("keyboardheight", keyboardHeightSeek.getProgress());
+        sharedPreferences.commit();
         keyboardHeightSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                editor.putInt("keyboardheight", i);
-                editor.commit();
+                sharedPreferences.putInt("keyboardheight", i);
+                sharedPreferences.commit();
                 Integer keyboardheight = mSettings.getInt("keyboardheight", 0);
                 System.out.println("Keyboard Height " + keyboardheight);
                 keyboardHeightText.setText(keyboardheight.toString());
@@ -168,8 +147,8 @@ public class MainActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
                                 backgroundColor = selectedColor;
-                                editor.putInt("backgroundcolor", selectedColor);
-                                editor.commit();
+                                sharedPreferences.putInt("backgroundcolor", selectedColor);
+                                sharedPreferences.commit();
                                 System.out.println(selectedColor);
                                 SimpleIME sm = new SimpleIME();
                                 sm.setBackgroundColor();
@@ -199,7 +178,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         if (mSettings.contains("keyheight")){
-            seekBarHeight.setProgress(mSettings.getInt("keyheight", 0));
+            keyHeightSeekBar.setProgress(mSettings.getInt("keyheight", 0));
         }
         if (mSettings.contains("keyboardheight")){
             keyboardHeightSeek.setProgress(mSettings.getInt("keyboardheight", 0));
