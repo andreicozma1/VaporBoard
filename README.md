@@ -1,0 +1,1 @@
+My first attempt at writing a full Android Application circa 2015. My knowledge of Java at the time was also very limited as I was a highschool freshman. Unfortunately this project was never finished but V2.0 may come some day

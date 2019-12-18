@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Key Height"
+                android:text="Key Height (WIP)"
                 android:textAlignment="center" />
 
             <SeekBar
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Keyboard Height"
+                android:text="Keyboard Height (WIP)"
                 android:textAlignment="center" />
 
             <SeekBar

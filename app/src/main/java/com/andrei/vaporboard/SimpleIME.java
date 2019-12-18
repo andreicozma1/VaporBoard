@@ -133,9 +133,9 @@ public class SimpleIME extends InputMethodService
 
                 if(lastCorrections.size() > 0 && !lastCorrections.contains(splitStr[splitStr.length-1].toString().trim())){
                     try{
-                        ic.deleteSurroundingText(splitStr[splitStr.length-1].length(), 0);
-                        ic.commitText(lastCorrections.get(0), 0);
-                        lastUsedPredictedWord = lastCorrections.get(0);
+                        //ic.deleteSurroundingText(splitStr[splitStr.length-1].length(), 0);
+                        //ic.commitText(lastCorrections.get(0), 0);
+                        //lastUsedPredictedWord = lastCorrections.get(0);
                     } catch (Exception ex){
                     }
                 }
